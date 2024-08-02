@@ -67,7 +67,7 @@ def hello(client: Client, message: Message):
                 amInfo(message)
             if 'music.apple' and 'music-video' in message.text.lower():
                 amvInfo(message) 
-        elif "/m" or "/mediainfo" message.reply_to_message:
+        elif "/m" or "/mediainfo" in message.reply_to_message:
             message.reply("Processing your Telegram file request...")
             tgInfo(client, message)
             #elif len(message.text) > 10:
