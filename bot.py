@@ -21,8 +21,10 @@ helpMessage = """MediaInfo support the following services:
 **Example:**
 
 For MediaInfo:
-`reply /info to file`
-`/info AM_url` (only albums and music video)
+`reply /m or /mediainfo to file`
+
+For Apple Music MetaData
+`Just send AM_url` (only albums and music video)
 
 For audio Spek:
 `reply /spek or /sox to audio`
@@ -60,14 +62,14 @@ def hello(client: Client, message: Message):
             generateSpek(message)
             return
 
-        elif "/info" in message.text:
+        elif "https://music.apple" in message.text:
             if 'music.apple' and 'album' in message.text.lower():
                 amInfo(message)
             if 'music.apple' and 'music-video' in message.text.lower():
                 amvInfo(message) 
-            elif message.reply_to_message:
-                message.reply("Processing your Telegram file request...")
-                tgInfo(client, message)
+        elif "/m" or "/mediainfo" message.reply_to_message:
+            message.reply("Processing your Telegram file request...")
+            tgInfo(client, message)
             #elif len(message.text) > 10:
                 #message.reply("Processing your DDL request...")
                 #ddlinfo(message)
